@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
+             x:Name="CinemaPage"
              xmlns:viewModel="clr-namespace:AppShopping.ViewModels"
              x:Class="AppShopping.Views.Cinema">
     
@@ -25,6 +25,11 @@
                     <DataTemplate>
                         <ContentView Padding="0,5">
                             <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference CinemaPage}, Path=BindingContext.FilmDetailCommand}" CommandParameter="{Binding .}"/>
+
+
+                                </Frame.GestureRecognizers>
                                 <Grid ColumnDefinitions="1*, 1, 2*" RowDefinitions="140">
                                     <Image HeightRequest="115" Source="{Binding Cover}" Margin="10"/>
                                     <Line Grid.Column="1" X1="0" X2="0" Y1="0" Y2="140"/>
