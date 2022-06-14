@@ -3,22 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
              xmlns:enums="clr-namespace:AppShopping.LIbraries.Enums"
-             x:Name="StoresPage"
-             x:Class="AppShopping.Views.Stores">
-
+             x:Name="RestaurantsPage"
+             x:Class="AppShopping.Views.Restaurants">
     <Shell.TitleView>
         <ContentView>
             <Image Source="TitleViewLogo" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="30"/>
         </ContentView>
-        
+
     </Shell.TitleView>
-    
+
     <ContentPage.BindingContext>
-        <viewModels:StoresViewModel>
+        <viewModels:RestaurantsViewModel>
             <x:Arguments>
-                <enums:EstablishmentType>Store</enums:EstablishmentType>
+                <enums:EstablishmentType>Restaurant</enums:EstablishmentType>
             </x:Arguments>
-        </viewModels:StoresViewModel>
+        </viewModels:RestaurantsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
@@ -28,8 +27,8 @@
                 </Frame>
                 <Button Command="{Binding SearchCommand}" Grid.Column="1" Text="OK"  Style="{StaticResource PrimaryButton}"/>
             </Grid>
-            
-            
+
+
 
             <CollectionView ItemsSource="{Binding Establishments}">
                 <CollectionView.ItemTemplate>
@@ -37,9 +36,9 @@
                         <ContentView Padding="10">
                             <Frame>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference StoresPage}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference RestaurantsPage}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
-                                
+
                                 <Grid ColumnDefinitions="1*, 1, 2*" RowDefinitions="96">
                                     <Image HeightRequest="80" Source="{Binding Logo}" Margin="10"/>
                                     <Line Grid.Column="1" X1="0" X2="0" Y1="0" Y2="96"/>
@@ -47,10 +46,10 @@
                                         <Label Text="{Binding Name}" Style="{StaticResource NameEstablishment}"/>
                                         <Label Text="{Binding Description}" MaxLines="3" Style="{StaticResource DescriptionEstablishment}"/>
                                     </StackLayout>
-                                    </Grid>
+                                </Grid>
                             </Frame>
                         </ContentView>
-                        
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

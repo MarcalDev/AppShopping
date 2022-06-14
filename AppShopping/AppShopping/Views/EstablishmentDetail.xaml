@@ -32,7 +32,7 @@
 
                         <Image Source="pin" Grid.Row="3" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
                         <Label Text="Localização" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="3" Style="{StaticResource Subtitle}"/>
-                        <Label Text="{Binding Establishment.Adress}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="4"/>
+                        <Label Text="{Binding Establishment.Address}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="4"/>
 
                         <Image Source="phone" Grid.Row="6" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
                         <Label Text="Telefone" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="6" Style="{StaticResource Subtitle}"/>
