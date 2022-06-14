@@ -16,7 +16,7 @@ namespace AppShopping.Services
                 {
                     Id = 1,
                     Type = EstablishmentType.Store,
-                    Logo = "https://logodownload.org/wp-content/uploads/2014/07/renner-logo-2-1.png",
+                    Logo = "https://reclamacoes.net.br/wp-content/uploads/renner-reclamacoes.jpg",
                     Name = "Renner",
                     Description = "A Lojas Renner S.A. lorem ipsum",
                     Adress = "3 andar - Loja 10 - Setor Norte",
