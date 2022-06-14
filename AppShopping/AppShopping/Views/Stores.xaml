@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
+             x:Name="StoresPage"
              x:Class="AppShopping.Views.Stores">
 
     <Shell.TitleView>
@@ -29,7 +30,11 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView Padding="10">
-                            <Frame HasShadow="False" CornerRadius="0" BorderColor="{StaticResource BorderColor}" Padding="1">
+                            <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference StoresPage}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                
                                 <Grid ColumnDefinitions="1*, 1, 2*" RowDefinitions="96">
                                     <Image HeightRequest="80" Source="{Binding Logo}" Margin="10"/>
                                     <Line Grid.Column="1" X1="0" X2="0" Y1="0" Y2="96"/>

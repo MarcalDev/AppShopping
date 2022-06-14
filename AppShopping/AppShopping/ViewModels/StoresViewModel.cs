@@ -2,6 +2,7 @@
 using AppShopping.LIbraries.Helpers.MVVM;
 using AppShopping.Models;
 using AppShopping.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +29,12 @@ namespace AppShopping.ViewModels
         }
         private List<Establishment> _allEstablishments;
 
+        public ICommand DetailCommand { get; set; }
+
         public StoresViewModel()
         {
             SearchCommand = new Command(Search);
+            DetailCommand = new Command<Establishment>(Detail);
 
             var allEstablishment = new EstablishmentService().GetEstablishments();
             var allStores = allEstablishment.Where(a => a.Type == EstablishmentType.Store).ToList();
@@ -43,6 +47,12 @@ namespace AppShopping.ViewModels
         {
 
             Establishments = _allEstablishments.Where(a => a.Name.ToLower().Contains(SearchWord.ToLower())).ToList();
+        }
+
+        private void Detail(Establishment establishment)
+        {
+            String establishmentSerialized = JsonConvert.SerializeObject(establishment);
+            Shell.Current.GoToAsync($"establishment/detail?establishmentSerialized={Uri.EscapeDataString( establishmentSerialized)}");
         }
     }
 }

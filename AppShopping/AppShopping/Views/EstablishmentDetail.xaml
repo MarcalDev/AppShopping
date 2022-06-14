@@ -20,25 +20,27 @@
         <viewModel:EstablishmentDetailViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Spacing="0" Padding="20">
-            <Label Text="{Binding Establishment.Type, Converter={StaticResource EstablishmentTypeConverter}}" Style="{StaticResource TitleType}"/>
-            <Label Text="{Binding Establishment.Name}" Style="{StaticResource TitleName}"/>
-            <Frame Padding="10, 10, 10, 30" Margin="0,26,0,0">
-                <Grid ColumnDefinitions="1*,1*,1*,1*,1*,1*" RowDefinitions="Auto,Auto, 20,Auto,Auto, 20,Auto,Auto">
-                    <Image Source="{Binding Establishment.Logo}" WidthRequest="54" HorizontalOptions="Center" Margin="10"  Grid.ColumnSpan="2"/>
-                    <Label Text="{Binding Establishment.Name}" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource NameEstablishment}"/>
-                    <Label Text="{Binding Establishment.Description}" Margin="10,0" Grid.Row="1" Grid.ColumnSpan="6" Style="{StaticResource DescriptionEstablishment}"/>
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="20">
+                <Label Text="{Binding Establishment.Type, Converter={StaticResource EstablishmentTypeConverter}}" Style="{StaticResource TitleType}"/>
+                <Label Text="{Binding Establishment.Name}" Style="{StaticResource TitleName}"/>
+                <Frame Padding="10, 10, 10, 30" Margin="0,26,0,0">
+                    <Grid ColumnDefinitions="1*,1*,1*,1*,1*,1*" RowDefinitions="Auto,Auto, 20,Auto,Auto, 20,Auto,Auto">
+                        <Image Source="{Binding Establishment.Logo}" WidthRequest="54" HorizontalOptions="Center" Margin="10"  Grid.ColumnSpan="2"/>
+                        <Label Text="{Binding Establishment.Name}" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource NameEstablishment}"/>
+                        <Label Text="{Binding Establishment.Description}" Margin="10,0" Grid.Row="1" Grid.ColumnSpan="6" Style="{StaticResource DescriptionEstablishment}"/>
 
-                    <Image Source="pin" Grid.Row="3" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
-                    <Label Text="Localização" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="3" Style="{StaticResource Subtitle}"/>
-                    <Label Text="{Binding Establishment.Adress}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="4"/>
+                        <Image Source="pin" Grid.Row="3" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
+                        <Label Text="Localização" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="3" Style="{StaticResource Subtitle}"/>
+                        <Label Text="{Binding Establishment.Adress}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="4"/>
 
-                    <Image Source="phone" Grid.Row="6" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
-                    <Label Text="Telefone" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="6" Style="{StaticResource Subtitle}"/>
-                    <Label Text="{Binding Establishment.Phone}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="7"/>
-                    
-                </Grid>
-            </Frame>
-        </StackLayout>
+                        <Image Source="phone" Grid.Row="6" Grid.RowSpan="2" HeightRequest="28" VerticalOptions="Center"/>
+                        <Label Text="Telefone" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="6" Style="{StaticResource Subtitle}"/>
+                        <Label Text="{Binding Establishment.Phone}" Style="{StaticResource NameEstablishment}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="7"/>
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>        
     </ContentPage.Content>
 </ContentPage>
