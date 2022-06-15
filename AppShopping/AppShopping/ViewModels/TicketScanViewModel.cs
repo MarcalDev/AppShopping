@@ -1,9 +1,11 @@
 ﻿using AppShopping.LIbraries.Helpers.MVVM;
-using MvvmHelpers.Commands;
+using AppShopping.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace AppShopping.ViewModels
 {
@@ -32,7 +34,41 @@ namespace AppShopping.ViewModels
         
         private void TicketScan()
         {
+            // Camera - Scanear o código de barras. (ZXing.Net.Mobile)
 
+            var scanPage = new ZXingScannerPage();
+            scanPage.OnScanResult += (result) =>
+            {
+                scanPage.IsScanning = false;
+
+                Shell.Current.Navigation.PopAsync();
+
+                Message = result.Text;
+            };
+            // Implementar Async
+            Shell.Current.Navigation.PushAsync(scanPage);
+
+
+            TicketProcess("");
+            //  TicketNumber > Método novo
+
+            /*
+             * GetTicketInfo(Numero Ticket)
+             * > Message
+             * > Ticket > GoToAsync
+             */
+        }
+        private void TicketProcess(string ticketNumber)
+        {
+            try
+            {
+                var ticket = new TicketService().GetTicketInfo(ticketNumber);
+
+                // Navegar para página de pagamento do Ticket
+            } catch (Exception e)
+            {
+                Message = e.Message;
+            }
         }
         private void TicketPaidHistory()
         {
