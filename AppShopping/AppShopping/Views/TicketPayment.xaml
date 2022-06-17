@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
              xmlns:converters="clr-namespace:AppShopping.LIbraries.Converters"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
@@ -12,11 +13,9 @@
         </ContentView>
     </Shell.TitleView>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:PassingTimeConverter x:Key="PassingTimeConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+            <viewModels:TicketPaymentViewModel/>
+    </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <StackLayout Padding="10">
@@ -34,21 +33,21 @@
                     <Label Style="{StaticResource NameEstablishment}" FontSize="14">
                         <Label.Text>
                             <MultiBinding StringFormat="{}Ticket: {0}">
-                                <Binding Path="Number"/>
+                                <Binding Path="Ticket.Number"/>
                             </MultiBinding>
                         </Label.Text>
                     </Label>
 
                     <StackLayout Orientation="Horizontal" Margin="0, 15, 0, 0">
                         <Label Text="Permanência: " Style="{StaticResource DescriptionEstablishment}"/>
-                        <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" Style="{StaticResource DescriptionEstablishment}" />
+                        <Label Text="{Binding Ticket,Converter={StaticResource PassingTimeConverter}}" Style="{StaticResource DescriptionEstablishment}" />
                     </StackLayout>
 
 
                     <Label Style="{StaticResource DescriptionEstablishment}">
                         <Label.Text>
                             <MultiBinding StringFormat="{}Entrada: {0}">
-                                <Binding Path="StartDate"/>
+                                <Binding Path="Ticket.StartDate"/>
                             </MultiBinding>
                         </Label.Text>
                     </Label>
@@ -56,7 +55,7 @@
                     <Label Style="{StaticResource DescriptionEstablishment}">
                         <Label.Text>
                             <MultiBinding StringFormat="{}Saída: {0}">
-                                <Binding Path="EndDate"/>
+                                <Binding Path="Ticket.EndDate"/>
                             </MultiBinding>
                         </Label.Text>
                     </Label>
@@ -64,7 +63,7 @@
                     <Label Style="{StaticResource Subtitle}" FontSize="12">
                         <Label.Text>
                             <MultiBinding StringFormat="{}Valor: R${0}">
-                                <Binding Path="Price"/>
+                                <Binding Path="Ticket.Price"/>
                             </MultiBinding>
                         </Label.Text>
                     </Label>
@@ -94,10 +93,10 @@
 
                     <Grid ColumnDefinitions="*,*">
                         <Frame Padding="10,0" Grid.Column="0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                            <Entry Placeholder="Validade"/>
+                            <control:MaskedEntry Mask="XX/XXXX" Placeholder="Validade" TextColor="Black" PlaceholderColor="Black"/>
                         </Frame>
                         <Frame Padding="10,0" Grid.Column="1" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                            <Entry Placeholder="Cod. Segurança"/>
+                            <control:MaskedEntry Mask="XXX" Placeholder="Cod. Segurança" TextColor="Black" PlaceholderColor="Black"/>
                         </Frame>
 
                     </Grid>

@@ -76,6 +76,7 @@ namespace AppShopping.ViewModels
                 var ticketNumber = TicketNumber.Replace("", string.Empty);
                 TicketProccess(ticketNumber);
             }
+
         }
         private void TicketProccess(string ticketNumber)
         {
@@ -83,7 +84,11 @@ namespace AppShopping.ViewModels
             {
                 var ticket = new TicketService().GetTicketInfo(ticketNumber);
 
+                Shell.Current.GoToAsync($"ticket/payment?number={ticketNumber}");
+
                 // Navegar para página de pagamento do Ticket
+
+
             } catch (Exception e)
             {
                 Message = e.Message;
