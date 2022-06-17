@@ -37,7 +37,7 @@
                                 </yummy:PancakeView.Border>
                                 
                                 <StackLayout>
-                                    <Label >
+                                    <Label Style="{StaticResource NameEstablishment}" FontSize="14">
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}Ticket: {0}">
                                                 <Binding Path="Number"/>
@@ -45,13 +45,13 @@
                                         </Label.Text>
                                     </Label>
 
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Permanência: " />
-                                        <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" />
+                                    <StackLayout Orientation="Horizontal" Margin="0, 15, 0, 0">
+                                        <Label Text="Permanência: " Style="{StaticResource DescriptionEstablishment}"/>
+                                        <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" Style="{StaticResource DescriptionEstablishment}" />
                                     </StackLayout>
 
 
-                                    <Label>
+                                    <Label Style="{StaticResource DescriptionEstablishment}">
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}Entrada: {0}">
                                                 <Binding Path="StartDate"/>
@@ -59,7 +59,7 @@
                                         </Label.Text>
                                     </Label>
 
-                                    <Label>
+                                    <Label Style="{StaticResource DescriptionEstablishment}">
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}Saída: {0}">
                                                 <Binding Path="EndDate"/>
@@ -67,7 +67,7 @@
                                         </Label.Text>
                                     </Label>
 
-                                    <Label>
+                                    <Label Style="{StaticResource Subtitle}" FontSize="12">
                                         <Label.Text>
                                             <MultiBinding StringFormat="{}Valor: R${0}">
                                                 <Binding Path="Price"/>
