@@ -28,7 +28,7 @@
                         <control:MaskedEntry.Behaviors>
                             <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding TicketTextChangedCommand }"/>
                         </control:MaskedEntry.Behaviors>
-                    </control:MaskedEntry>
+                    </control:MaskedEntry> 
                     <!-- Total de caracteres 15 -->
                 </Frame>
                 <Button ImageSource="Camera" Command="{Binding TicketScanCommand}" Style="{StaticResource PrimaryButton}"  Grid.Column="1" />

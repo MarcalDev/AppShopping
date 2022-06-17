@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
+             x:Class="AppShopping.Views.TickedPaidHistory">
+    
+    <Shell.TitleView>
+        <ContentView>
+            <Image Source="TitleViewLogo" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="30"/>
+        </ContentView>
+    </Shell.TitleView>
+    
+    
+    <ContentPage.BindingContext>
+        <viewModels:TickedPaidHistoryViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Tickets" Style="{StaticResource TitleType}"/>
+            <Label Text="Pagos" Style="{StaticResource TitleName}"/>
+            <CollectionView ItemsSource="{Binding Tickets}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <StackLayout>
+                                <Label Text="Ticket #135781354" TextColor="Black"/>
+                                <Label Text="Permanência: 3h 10m" TextColor="Black"/>
+                                <Label Text="Entrada: 12:00h" TextColor="Black"/>
+                                <Label Text="Saída: 15:00h" TextColor="Black"/>
+                                <Label Text="Valor: R$ 6,00" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
