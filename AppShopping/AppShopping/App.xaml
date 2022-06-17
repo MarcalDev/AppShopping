@@ -41,6 +41,8 @@
             
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="MontserratRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                
             </Style>
 
             <Style TargetType="Entry">

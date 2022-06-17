@@ -2,13 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
-             x:Class="AppShopping.Views.TickedPaidHistory">
+             xmlns:converters="clr-namespace:AppShopping.LIbraries.Converters"
+    x:Class="AppShopping.Views.TickedPaidHistory">
     
     <Shell.TitleView>
         <ContentView>
             <Image Source="TitleViewLogo" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="30"/>
         </ContentView>
     </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PassingTimeConverter x:Key="PassingTimeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     
     <ContentPage.BindingContext>
@@ -24,11 +31,46 @@
                     <DataTemplate>
                         <Frame>
                             <StackLayout>
-                                <Label Text="Ticket #135781354" TextColor="Black"/>
-                                <Label Text="Permanência: 3h 10m" TextColor="Black"/>
-                                <Label Text="Entrada: 12:00h" TextColor="Black"/>
-                                <Label Text="Saída: 15:00h" TextColor="Black"/>
-                                <Label Text="Valor: R$ 6,00" TextColor="Black"/>
+                                <Label >
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Ticket: {0}">
+                                            <Binding Path="Number"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Permanência: " />
+                                    <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" />
+                                </StackLayout>
+
+
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Entrada: {0}">
+                                            <Binding Path="StartDate"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Saída: {0}">
+                                            <Binding Path="EndDate"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Valor: R${0}">
+                                            <Binding Path="Price"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+
+                               
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
