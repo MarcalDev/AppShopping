@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
              xmlns:converters="clr-namespace:AppShopping.LIbraries.Converters"
-    x:Class="AppShopping.Views.TickedPaidHistory">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AppShopping.Views.TickedPaidHistory">
     
     <Shell.TitleView>
         <ContentView>
@@ -29,50 +30,57 @@
             <CollectionView ItemsSource="{Binding Tickets}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame>
-                            <StackLayout>
-                                <Label >
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}Ticket: {0}">
-                                            <Binding Path="Number"/>
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
+                        <ContentView Padding="0, 7">
+                            <yummy:PancakeView Padding="10" Margin="1" BackgroundColor="White">
+                                <yummy:PancakeView.Border>
+                                    <yummy:Border Color="#000000" Thickness="1" DashPattern="4,10"/>
+                                </yummy:PancakeView.Border>
+                                
+                                <StackLayout>
+                                    <Label >
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Ticket: {0}">
+                                                <Binding Path="Number"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Permanência: " />
-                                    <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Permanência: " />
+                                        <Label Text="{Binding .,Converter={StaticResource PassingTimeConverter}}" />
+                                    </StackLayout>
+
+
+                                    <Label>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Entrada: {0}">
+                                                <Binding Path="StartDate"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
+                                    <Label>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Saída: {0}">
+                                                <Binding Path="EndDate"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
+                                    <Label>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Valor: R${0}">
+                                                <Binding Path="Price"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
+
+
                                 </StackLayout>
-
-
-                                <Label>
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}Entrada: {0}">
-                                            <Binding Path="StartDate"/>
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-
-                                <Label>
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}Saída: {0}">
-                                            <Binding Path="EndDate"/>
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-
-                                <Label>
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}Valor: R${0}">
-                                            <Binding Path="Price"/>
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-
-
-                               
-                            </StackLayout>
-                        </Frame>
+                            </yummy:PancakeView>
+                        </ContentView>
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
