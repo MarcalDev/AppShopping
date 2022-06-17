@@ -11,9 +11,9 @@ namespace AppShopping.Services
     {
         private List<Ticket> fakeTickets = new List<Ticket>()
         {
-            new Ticket() { Number = "1555551515161", StartDate = new DateTime(2020, 10, 20, 16, 02, 32), Status = TicketStatus.paid },
-            new Ticket() { Number = "4646449994646", StartDate = new DateTime(2020, 10, 20, 18, 56, 42), Status = TicketStatus.paid },
-            new Ticket() { Number = "3535353534646", StartDate = new DateTime(2020, 10, 20, 20, 32, 01), Status = TicketStatus.paid },
+            new Ticket() { Number = "100", StartDate = new DateTime(2020, 10, 20, 16, 02, 32), Status = TicketStatus.paid },
+            new Ticket() { Number = "209883557324", StartDate = new DateTime(2020, 10, 20, 18, 56, 42), Status = TicketStatus.paid },
+            new Ticket() { Number = "209883557325", StartDate = new DateTime(2020, 10, 20, 20, 32, 01), Status = TicketStatus.peding },
             
         };
 

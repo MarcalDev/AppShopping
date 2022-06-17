@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
+             BackgroundColor="red"
+             xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
+             xmlns:behaviors="clr-namespace:AppShopping.LIbraries.Behaviors"
              x:Class="AppShopping.Views.TicketScan">
 
     <Shell.TitleView>
@@ -21,7 +24,12 @@
 
             <Grid ColumnDefinitions="*, 70" RowDefinitions="50" Margin="0,10">
                 <Frame Padding="10,0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                    <Entry Placeholder="Escanear o Ticket" Text="{Binding TicketNumber}"/>
+                    <control:MaskedEntry Mask="XXX XXX XXX XXX" Placeholder="Escanear o Ticket" Text="{Binding TicketNumber}" TextColor="Black">
+                        <control:MaskedEntry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding TicketTextChangedCommand }"/>
+                        </control:MaskedEntry.Behaviors>
+                    </control:MaskedEntry>
+                    <!-- Total de caracteres 15 -->
                 </Frame>
                 <Button ImageSource="Camera" Command="{Binding TicketScanCommand}" Style="{StaticResource PrimaryButton}"  Grid.Column="1" />
             </Grid>
