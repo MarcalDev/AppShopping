@@ -28,5 +28,6 @@
         <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
 
     <ShellContent Title="Ticket" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketScan}"/>
+    <ShellContent Title="Ticket Payment" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketPayment}"/>
     
 </Shell>
