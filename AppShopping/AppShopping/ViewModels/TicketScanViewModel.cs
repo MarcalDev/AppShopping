@@ -73,7 +73,7 @@ namespace AppShopping.ViewModels
         {
             if(TicketNumber.Length == 15)
             {
-                var ticketNumber = TicketNumber.Replace("", string.Empty);
+                var ticketNumber = TicketNumber.Replace(" ", string.Empty);
                 TicketProccess(ticketNumber);
             }
 

@@ -120,6 +120,15 @@
                 <Setter Property="CornerRadius" Value="0"/>
             </Style>
 
+            <Style TargetType="Entry" x:Key="EntryPayment">
+                <Setter Property="FontFamily" Value="MontserratRegular"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="PlaceholderColor" Value="LightGray"/>
+                <Setter Property="TextColor" Value="{StaticResource Black}"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
 
 
         </ResourceDictionary>

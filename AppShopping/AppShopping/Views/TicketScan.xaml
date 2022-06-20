@@ -23,9 +23,9 @@
 
             <Grid ColumnDefinitions="*, 70" RowDefinitions="50" Margin="0,10">
                 <Frame Padding="10,0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                    <control:MaskedEntry Mask="XXXXXXXXXXXX" Placeholder="Escanear o Ticket" Text="{Binding TicketNumber}" TextColor="Black">
+                    <control:MaskedEntry Mask="XXX XXX XXX XXX" Placeholder="Escanear o Ticket" Text="{Binding TicketNumber}" TextColor="Black">
                         <control:MaskedEntry.Behaviors>
-                            <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding TicketTextChangedCommand }"/>
+                            <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding TicketTextChangedCommand}"/>
                         </control:MaskedEntry.Behaviors>
                     </control:MaskedEntry> 
                     
