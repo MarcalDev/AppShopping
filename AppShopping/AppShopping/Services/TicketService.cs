@@ -45,6 +45,14 @@ namespace AppShopping.Services
             return ticket;
         }
 
+        public void UpdateTicket(Ticket newTicket) { 
+            var oldTicket = fakeTickets.FirstOrDefault(a => a.Number == newTicket.Number);
+            oldTicket.TransactionId = newTicket.TransactionId;
+            oldTicket.EndDate = newTicket.EndDate;
+            oldTicket.Price = newTicket.Price;
+            oldTicket.Status = newTicket.Status;
+        }
+
         private double PriceCalculator(Ticket ticket)
         {
             TimeSpan dif = ticket.EndDate.Value - ticket.StartDate;

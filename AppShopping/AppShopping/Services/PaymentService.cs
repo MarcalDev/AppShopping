@@ -7,14 +7,14 @@ namespace AppShopping.Services
 {
     public class PaymentService
     {
-        public int SendPayment(CreditCard creditCard)
+        public string SendPayment(CreditCard creditCard, Ticket ticket)
         {
             if(creditCard.SecurityCode == "111")
             {
                 throw new Exception("Código de segurança inválido");
 
             }
-            return 1;
+            return "1";
         }
     }
 }
