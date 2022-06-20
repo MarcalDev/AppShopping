@@ -126,7 +126,18 @@ namespace AppShopping.ViewModels
                 var month = int.Parse(expiredString[0]);
                 var year = int.Parse(expiredString[1]);
 
-                new DateTime(month, year, 01);
+                var expireDate = new DateTime(year, month, 01);
+                var now = DateTime.Now;
+
+                //YEAR:  2022 - 2023 true
+                //MONTH: 01 - 02 true
+                //01/2023 - 02/2023
+                 
+                if (expireDate.Year < now.Year ||
+                    ( expireDate.Month < now.Month && expireDate.Year == now.Year))
+                {
+                    messages.Append("Cartão expirado!" + Environment.NewLine);
+                }
             }catch (Exception ex)
             {
                 messages.Append("A validade do cartão não é valida!" + Environment.NewLine);
