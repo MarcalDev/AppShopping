@@ -86,7 +86,7 @@
                     <yummy:Border Color="#F44343" Thickness="1"/>
                 </yummy:PancakeView.Border>
                 <StackLayout>
-                    <Label Text="Cartão sem limite" Style="{StaticResource DescriptionEstablishment}" TextColor="#F44343" FontSize="14" />
+                    <Label Text="{Binding Message}" Style="{StaticResource DescriptionEstablishment}" TextColor="#F44343" FontSize="14" />
                     <Label Text="Busque nossos caixas espalhados no shopping para mais opções de pagamento." Style="{StaticResource DescriptionEstablishment}"/>
                 </StackLayout>
                  </yummy:PancakeView>

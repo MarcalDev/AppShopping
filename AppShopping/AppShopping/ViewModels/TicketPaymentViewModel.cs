@@ -96,9 +96,9 @@ namespace AppShopping.ViewModels
                     Messages = messages;
                 }
 
-            } catch (Exception ex)
+            } catch (Exception e)
             {
-                await Shell.Current.GoToAsync($"ticket/payment/failed?number={Ticket.Number}");
+                await Shell.Current.GoToAsync($"ticket/payment/failed?number={Ticket.Number}&message={e.Message}");
             }
             //Colocar mensagem de erro
 
