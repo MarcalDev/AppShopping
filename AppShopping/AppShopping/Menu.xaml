@@ -27,6 +27,7 @@
         <ShellContent Title="Wifi" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:Stores}"/>
         <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
         <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
+        <ShellContent Title="Payment Success" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:TicketPaymentSucess}"/>
 
     <ShellContent Title="Ticket" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketScan}"/>
     <ShellContent Title="Ticket Payment" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketPayment}"/>

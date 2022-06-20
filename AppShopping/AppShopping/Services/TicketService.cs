@@ -25,7 +25,7 @@ namespace AppShopping.Services
             return fakeTickets.Where(a=>a.Status == TicketStatus.paid).ToList();
         }
 
-        public Ticket GetTicketInfo(string number)
+        public Ticket GetTicketToPaid(string number)
         {
             var endDate = DateTime.Now;
 
@@ -45,12 +45,24 @@ namespace AppShopping.Services
             return ticket;
         }
 
+        public Ticket GetTicket(string number)
+        {
+            var ticket = fakeTickets.FirstOrDefault(a => a.Number == number);
+
+            if (ticket == null)
+                throw new Exception("Ticket não encontrado!");
+                        
+            return ticket;
+        }
+
         public void UpdateTicket(Ticket newTicket) { 
-            var oldTicket = fakeTickets.FirstOrDefault(a => a.Number == newTicket.Number);
-            oldTicket.TransactionId = newTicket.TransactionId;
-            oldTicket.EndDate = newTicket.EndDate;
-            oldTicket.Price = newTicket.Price;
-            oldTicket.Status = newTicket.Status;
+            //var oldTicket = fakeTickets.FirstOrDefault(a => a.Number == newTicket.Number);
+            //oldTicket.TransactionId = newTicket.TransactionId;
+            //oldTicket.EndDate = newTicket.EndDate;
+            //oldTicket.Price = newTicket.Price;
+            //oldTicket.Status = newTicket.Status;
+
+
         }
 
         private double PriceCalculator(Ticket ticket)

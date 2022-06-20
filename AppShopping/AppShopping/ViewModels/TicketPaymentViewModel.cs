@@ -2,9 +2,11 @@
 using AppShopping.LIbraries.Validator;
 using AppShopping.Models;
 using AppShopping.Services;
+using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -27,7 +29,7 @@ namespace AppShopping.ViewModels
             {
                 SetProperty(ref _number, value);
 
-                Ticket = _ticketService.GetTicketInfo(value);
+                Ticket = _ticketService.GetTicketToPaid(value);
 
                 // Pesquisar Ticket e jogar na tela.
             } 
@@ -62,10 +64,10 @@ namespace AppShopping.ViewModels
 
             CreditCard = new CreditCard();
 
-            PaymentCommand = new Command(Payment);
+            PaymentCommand = new AsyncCommand(Payment);
         }
 
-        private void Payment()
+        private async Task Payment()
         {
             //Implementar
             //Validar
@@ -83,8 +85,9 @@ namespace AppShopping.ViewModels
                     Ticket.TransactionId = transactionId;
                     Ticket.Status = LIbraries.Enums.TicketStatus.paid;
 
-                    var x = _ticketService.GetTicketsPaid();
+                    _ticketService.UpdateTicket(Ticket);
 
+                    await Shell.Current.GoToAsync($"ticket/payment/success?number={Ticket.Number}");
                     // Salvar no banco
 
                 }
@@ -95,7 +98,7 @@ namespace AppShopping.ViewModels
 
             } catch (Exception ex)
             {
-
+                await Shell.Current.GoToAsync($"ticket/payment/failed?number={Ticket.Number}");
             }
             //Colocar mensagem de erro
 
