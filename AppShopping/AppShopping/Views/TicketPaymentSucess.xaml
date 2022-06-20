@@ -81,7 +81,7 @@
             <Label Text="Tolerância" Margin="0, 20, 0, 5" HorizontalOptions="Center" Style="{StaticResource TitleType}"/>
             <Label Text="30 min" HorizontalOptions="Center" Style="{StaticResource TitleName}" FontSize="38"/>
 
-            <Button Text="OK" Margin="0, 20, 0,0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
+            <Button Text="OK" Command="{Binding OKCommand}" Margin="0, 20, 0,0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

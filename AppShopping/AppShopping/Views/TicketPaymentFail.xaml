@@ -91,7 +91,7 @@
                 </StackLayout>
                  </yummy:PancakeView>
             
-            <Button Text="OK" Margin="0, 20, 0, 0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
+            <Button Text="OK" Command="{Binding OKCommand}" Margin="0, 20, 0, 0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

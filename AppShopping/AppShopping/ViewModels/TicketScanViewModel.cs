@@ -12,7 +12,15 @@ namespace AppShopping.ViewModels
 {
     public class TicketScanViewModel : BaseViewModel
     {
-        public string TicketNumber { get; set; }
+        private string _ticketNumber;
+
+        public string TicketNumber
+        {
+            get { return _ticketNumber; }
+            set { SetProperty(ref _ticketNumber, value); }
+        }
+
+
         public ICommand TicketTextChangedCommand { get; set; }
         public ICommand TicketScanCommand { get; set; }
         private string _message;
@@ -78,15 +86,16 @@ namespace AppShopping.ViewModels
             }
 
         }
-        private void TicketProccess(string ticketNumber)
+        private async Task TicketProccess(string ticketNumber)
         {
             try
             {
                 var ticket = new TicketService().GetTicketToPaid(ticketNumber);
 
-                Shell.Current.GoToAsync($"ticket/payment?number={ticketNumber}");
-
                 // Navegar para página de pagamento do Ticket
+                await Shell.Current.GoToAsync($"ticket/payment?number={ticketNumber}");
+                TicketNumber = String.Empty;
+                
 
 
             } catch (Exception e)
