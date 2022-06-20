@@ -21,7 +21,7 @@ namespace AppShopping
             Routing.RegisterRoute("ticket/paid/history", typeof(Views.TickedPaidHistory));
             Routing.RegisterRoute("ticket/payment", typeof(Views.TicketPayment));
             Routing.RegisterRoute("ticket/payment/success", typeof(Views.TicketPaymentSucess));
-            Routing.RegisterRoute("ticket/payment/failed", typeof(Views.TicketPaymentFailed));
+            Routing.RegisterRoute("ticket/payment/failed", typeof(Views.TicketPaymentFail));
         }
     }
 }

@@ -10,7 +10,7 @@ using Xamarin.Forms;
 namespace AppShopping.ViewModels
 {
     [QueryProperty("Number", "number")]
-    public class TicketPaymentSuccessViewModel : BaseViewModel
+    public class TicketPaymentFailedViewModel : BaseViewModel
     {
         private string _number;
         public String Number
@@ -38,7 +38,7 @@ namespace AppShopping.ViewModels
         public ICommand OKCommand { get; set; }
         private TicketService _ticketService;
 
-        public TicketPaymentSuccessViewModel()
+        public TicketPaymentFailedViewModel()
         {
             OKCommand = new Command(OK);
 

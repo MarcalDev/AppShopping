@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels" 
              xmlns:converters="clr-namespace:AppShopping.LIbraries.Converters" 
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="AppShopping.Views.TicketPaymentSucess">
+             
+             x:Class="AppShopping.Views.TicketPaymentFail">
     <Shell.TitleView>
         <ContentView>
             <Image Source="TitleViewLogo" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="30"/>
@@ -12,7 +13,7 @@
     </Shell.TitleView>
 
     <ContentPage.BindingContext>
-        <viewModels:TicketPaymentSuccessViewModel/>
+        <viewModels:TicketPaymentFailedViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -77,11 +78,20 @@
                 </StackLayout>
             </yummy:PancakeView>
 
-            <Label Text="Pagamento aprovado" HorizontalOptions="Center" Style="{StaticResource TitleType}" TextColor="#1BAB42"/>
-            <Label Text="Tolerância" Margin="0, 20, 0, 5" HorizontalOptions="Center" Style="{StaticResource TitleType}"/>
-            <Label Text="30 min" HorizontalOptions="Center" Style="{StaticResource TitleName}" FontSize="38"/>
 
-            <Button Text="OK" Margin="0, 20, 0,0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
+            <Label Text="Pagamento rejeitado" Margin="0, 7" Style="{StaticResource TitleType}" TextColor="#F44343"/>
+
+            <yummy:PancakeView Padding="10, 20" Margin="1" BackgroundColor="White">
+                <yummy:PancakeView.Border>
+                    <yummy:Border Color="#F44343" Thickness="1"/>
+                </yummy:PancakeView.Border>
+                <StackLayout>
+                    <Label Text="Cartão sem limite" Style="{StaticResource DescriptionEstablishment}" TextColor="#F44343" FontSize="14" />
+                    <Label Text="Busque nossos caixas espalhados no shopping para mais opções de pagamento." Style="{StaticResource DescriptionEstablishment}"/>
+                </StackLayout>
+                 </yummy:PancakeView>
+            
+            <Button Text="OK" Margin="0, 20, 0, 0" Style="{StaticResource TicketPaidButton}" WidthRequest="115" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
