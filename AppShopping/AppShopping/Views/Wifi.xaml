@@ -20,6 +20,8 @@
             <Label Text="Novidades" Style="{StaticResource TitleType}"/>
             <Label Text="Para você" Style="{StaticResource TitleName}"/>
 
+
+            <Label Text="{Binding Message}" TextColor="Red"/>
             <Frame Margin="0, 40" Padding="10,0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
                 <Entry Placeholder="E-mail" Style="{StaticResource EntryPayment}" Text="{Binding Email}"/>
             </Frame>

@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
         xmlns:views="clr-namespace:AppShopping.Views"
         x:Class="AppShopping.Menu">
+
+    <Shell.BindingContext>
+        <viewModels:MenuViewModel/>
+    </Shell.BindingContext>
+    
     <Shell.FlyoutHeader >
         <Grid BackgroundColor="{StaticResource PrimaryColor}" Padding="0, 25" ColumnDefinitions="1*,2*" RowDefinitions="Auto, Auto">
             <Image Source="BagWhite" Grid.RowSpan="2"/>
@@ -23,13 +29,9 @@
 
 
         <ShellContent Title="Novidades" Icon="MenuIconNews" ContentTemplate="{DataTemplate views:News}"/>
-        <ShellContent Title="Como chegar" Icon="MenuIconMaps" ContentTemplate="{DataTemplate views:Stores}"/>
-        <ShellContent Title="Wifi" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:Wifi}"/>
-        <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
-        <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
-        <ShellContent Title="Payment Success" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:TicketPaymentSucess}"/>
+        <!--<ShellContent Title="Como chegar" Icon="MenuIconMaps" ContentTemplate="{DataTemplate views:Stores}"/>-->
+        <MenuItem Text="Como chegar" IconImageSource="MenuIconMaps" Command="{Binding OpenMapCommand}"/>
 
-    <ShellContent Title="Ticket" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketScan}"/>
-    <ShellContent Title="Ticket Payment" Icon="MenuIconTicket" ContentTemplate="{DataTemplate views:TicketPayment}"/>
-    
+        <ShellContent Title="Wifi" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:Wifi}"/>
+     
 </Shell>
