@@ -96,12 +96,16 @@
                         </Frame>
 
                         <Frame Padding="10,0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                            <control:MaskedEntry  Mask="XXXX XXXX XXXX XXXX" Keyboard="Numeric" Placeholder="Número do cartão" Text="{Binding CreditCard.Number}" Style="{StaticResource EntryPayment}"/>
+                            <Grid ColumnDefinitions="*, 25">
+                            <control:MaskedEntry Grid.Column="0" Mask="XXXX XXXX XXXX XXXX" Keyboard="Numeric" Placeholder="Número do cartão" Text="{Binding CreditCard.Number}" Style="{StaticResource EntryPayment}"/>
+                            <ImageButton Source="photograph" Command="{Binding CreditCardScanCommand}" BackgroundColor="Red" Grid.Column="1"/>
+
+                            </Grid>
                         </Frame>
 
                         <Grid ColumnDefinitions="*,*">
                             <Frame Padding="10,0" Grid.Column="0" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
-                                <control:MaskedEntry Mask="XX/XXXX" Keyboard="Numeric" Placeholder="Validade" Text="{Binding CreditCard.Expired}" Style="{StaticResource EntryPayment}"/>
+                                <control:MaskedEntry Mask="XX/XX" Keyboard="Numeric" Placeholder="Validade"  Text="{Binding CreditCard.Expired}" Style="{StaticResource EntryPayment}"/>
                             </Frame>
                             <Frame Padding="10,0" Grid.Column="1" HasShadow="False" BorderColor="{StaticResource BorderColor}" CornerRadius="0">
                                 <control:MaskedEntry Mask="XXX" Keyboard="Numeric" Placeholder="Cod. Segurança"  Text="{Binding CreditCard.SecurityCode}" Style="{StaticResource EntryPayment}"/>

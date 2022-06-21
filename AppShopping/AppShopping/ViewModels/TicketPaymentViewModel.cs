@@ -3,6 +3,7 @@ using AppShopping.LIbraries.Validator;
 using AppShopping.Models;
 using AppShopping.Services;
 using MvvmHelpers.Commands;
+using Plugin.PayCards;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,6 +55,7 @@ namespace AppShopping.ViewModels
         }
 
         public ICommand PaymentCommand { get; set; }
+        public ICommand CreditCardScanCommand { get; set; }
 
         private TicketService _ticketService;
         private PaymentService _paymentService;
@@ -64,7 +66,8 @@ namespace AppShopping.ViewModels
 
             CreditCard = new CreditCard();
 
-            PaymentCommand = new AsyncCommand(Payment);
+            PaymentCommand = new MvvmHelpers.Commands.AsyncCommand(Payment);
+            CreditCardScanCommand = new MvvmHelpers.Commands.AsyncCommand(CreditCardScan);
         }
 
         private async Task Payment()
@@ -125,9 +128,11 @@ namespace AppShopping.ViewModels
            
             try
             {
+                var firstTwoCharYear = DateTime.Now.Year.ToString().Substring(0, 2);
+
                 var expiredString = creditCard.Expired.Split('/');
                 var month = int.Parse(expiredString[0]);
-                var year = int.Parse(expiredString[1]);
+                var year = int.Parse(firstTwoCharYear + expiredString[1]);
 
                 var expireDate = new DateTime(year, month, 01);
                 var now = DateTime.Now;
@@ -172,6 +177,33 @@ namespace AppShopping.ViewModels
             return messages.ToString();
 
 
+        }
+
+        private async Task CreditCardScan()
+        {
+            // Scanear
+
+            var cardInfo = await CrossPayCards.Current.ScanAsync();
+
+            await Shell.Current.DisplayAlert("Mensagem", $"{cardInfo.HolderName}\n{cardInfo.CardNumber}\n{cardInfo.ExpirationDate}", "OK");
+
+            if (!string.IsNullOrEmpty(cardInfo.CardNumber))
+            {
+                CreditCard.Number = cardInfo.CardNumber;
+            }
+            if (!string.IsNullOrEmpty(cardInfo.HolderName))
+            {
+                CreditCard.Name = cardInfo.HolderName;
+            }
+            if (string.IsNullOrEmpty(cardInfo.ExpirationDate))
+            {
+                CreditCard.Expired = cardInfo.ExpirationDate;
+            }
+
+            OnPropertyChanged(nameof(CreditCard));
+
+
+            // Atribuir aos campos da tela
         }
 
         
