@@ -24,7 +24,7 @@
 
         <ShellContent Title="Novidades" Icon="MenuIconNews" ContentTemplate="{DataTemplate views:News}"/>
         <ShellContent Title="Como chegar" Icon="MenuIconMaps" ContentTemplate="{DataTemplate views:Stores}"/>
-        <ShellContent Title="Wifi" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:Stores}"/>
+        <ShellContent Title="Wifi" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:Wifi}"/>
         <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
         <ShellContent Title="Film Detail" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:FilmDetail}"/>
         <ShellContent Title="Payment Success" Icon="MenuIconWifi" ContentTemplate="{DataTemplate views:TicketPaymentSucess}"/>
