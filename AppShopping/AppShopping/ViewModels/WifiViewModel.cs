@@ -1,4 +1,5 @@
-﻿using AppShopping.LIbraries.Helpers.MVVM;
+﻿using AppShopping.LIbraries.Helpers.Connect;
+using AppShopping.LIbraries.Helpers.MVVM;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace AppShopping.ViewModels
 
         private void ConnectToWifi()
         {
-
+            var wifiConnector = Xamarin.Forms.DependencyService.Get<IWifiConnector>();
+            wifiConnector.ConnectToWifi("Secreto", "12345678");
         }
     }
 }

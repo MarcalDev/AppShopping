@@ -5,7 +5,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using AppShopping.Droid.Libraries.Helpers.Connect;
 using AppShopping.LIbraries.Helpers.Connect;
 using System;
 using System.Collections.Generic;
@@ -13,12 +12,12 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(WifiConnector))]
+[assembly: Dependency(typeof(AppShopping.Droid.Libraries.Helpers.Connect.WifiConnector))]
 namespace AppShopping.Droid.Libraries.Helpers.Connect
 {
     public class WifiConnector : IWifiConnector
     {
-        [Obsolete]
+      
         public void ConnectToWifi(string ssid, string password)
         {
             
@@ -41,10 +40,14 @@ namespace AppShopping.Droid.Libraries.Helpers.Connect
 
             if (network == null)
             {
-                wifiManager.Disconnect();
-                var enableNetwork = wifiManager.EnableNetwork(network.NetworkId, true);
-                return;
+                throw new Exception($"Cannot connect to network: {ssid}");
             }
+
+
+            wifiManager.Disconnect();
+            var enableNetwork = wifiManager.EnableNetwork(network.NetworkId, true);
+            wifiManager.Reconnect();
+           
         }
     }
 }
